@@ -1,10 +1,12 @@
 package servlet;
 
 import bean.vo.GoodsVo;
+import bean.vo.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import service.CartService;
 import service.GoodsService;
 
 import javax.servlet.RequestDispatcher;
@@ -15,10 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ModifyGoods extends HttpServlet {
     @Autowired
     GoodsService goodsService;
+    @Autowired
+    CartService cartService;
 
     public ModifyGoods() {
         super();
@@ -53,6 +59,20 @@ public class ModifyGoods extends HttpServlet {
         modifyGoods.setGoodsId(modifyGoodsId);
         modifyGoods.setGoodsName(modifyGoodsName);
         modifyGoods.setPrice(modifyGoodsPrice);
+
+        ArrayList<Item> cart = (ArrayList<Item>)session.getAttribute("cart");
+        Iterator<Item> it = cart.iterator();
+        while(it.hasNext()){
+            Item oneItem = it.next();
+            if(oneItem.getGoods().getGoodsId().equalsIgnoreCase(modifyGoodsId)){
+                oneItem.getGoods().setGoodsName(modifyGoodsName);
+                oneItem.getGoods().setPrice(modifyGoodsPrice);
+                break;
+            }
+        }
+        cartService.setCart(cart);
+        session.setAttribute("cart", cartService.getCart());
+
 
         if(goodsService.modifyGoods(modifyGoods)>0){
             message = "修改商品成功";
