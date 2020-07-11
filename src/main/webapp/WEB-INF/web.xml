@@ -1,0 +1,84 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>GetAllGoods</servlet-name>
+    <servlet-class>servlet.GetAllGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddToCart</servlet-name>
+    <servlet-class>servlet.AddToCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ProcessCart</servlet-name>
+    <servlet-class>servlet.ProcessCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ClearCart</servlet-name>
+    <servlet-class>servlet.ClearCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddGoods</servlet-name>
+    <servlet-class>servlet.AddGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModifyGoods</servlet-name>
+    <servlet-class>servlet.ModifyGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteGoods</servlet-name>
+    <servlet-class>servlet.DeleteGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShowModifyPage</servlet-name>
+    <servlet-class>servlet.ShowModifyPage</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GetAllGoods</servlet-name>
+    <url-pattern>/getAllGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddToCart</servlet-name>
+    <url-pattern>/addToCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProcessCart</servlet-name>
+    <url-pattern>/processCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClearCart</servlet-name>
+    <url-pattern>/clearCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddGoods</servlet-name>
+    <url-pattern>/addGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ModifyGoods</servlet-name>
+    <url-pattern>/modifyGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteGoods</servlet-name>
+    <url-pattern>/deleteGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowModifyPage</servlet-name>
+    <url-pattern>/showModifyPage</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/classes/applicationConfig.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+</web-app>
